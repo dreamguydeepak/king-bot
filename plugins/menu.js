@@ -34,18 +34,18 @@ let tags = {
 const defaultMenu = {
   before: `
 
-🙏🏻 Namaste %name, how can i help you?
+Chomie %name, how can i help you?
 
-🪵 Left: *%limit Limit*
-🎗️ Role: *%role*
-🛕 Level: *%level* 
-☕ Total XP: *%totalexp*
+ Left: *%limit Limit*
+ Role: *%role*
+ Level: *%level* 
+ Total XP: *%totalexp*
 
-〽️ Prefix: *%p*
-📅 Date: *%week, %date*
-💠 Github: github.com/itsajaygaur/tokio-wabot
+ Prefix: *%p*
+ Date: *%week, %date*
+ Github: github.com/zim-bot/king-bot
 
-👇🏻 All usable commands are listed below 
+ KING-BOT AT YOUR ASSISTANCE 
 
 %readmore`.trimStart(),
   header: '        *━━❰･%category･❱━━*',
