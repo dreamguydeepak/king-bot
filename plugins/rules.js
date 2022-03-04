@@ -1,17 +1,17 @@
 let handler = async m => m.reply(`
-🏮 *BOT RULES*
+🛑 *BOT RULES*
 
-🔖 _Do not call bot, if you do then you'll get automatically blocked by bot._
+🍓 Do not call bot, if you do then you'll get automatically blocked by bot.
     
-🔖 _Do not spam bot with commands, if bot is not responding then it means either bot is off or there's internet issue at owner's end._
+🍓 Do not spam bot with commands, if bot is not responding then it means either bot is off or there's internet issue at owner's end.
     
-🔖 _Do not abuse/disrespect bot and its owner._
+🍓 *Do not abuse/disrespect bot and its owner.*
     
-🔖 _If you see any bug/error in bot then report it to owner with the command !bug/report <problem>._
+🍓 If you see any bug/error in bot then report it to owner with the command !bug/report <problem>.
     
-🔖 _If you want this bot in your group then contact owner by typing !owner/creator._
+🍓 If you want this bot in your group then contact owner by typing !owner/creator.
     
-🔖 _Enjoy the bot and have fun._
+🍓 Enjoy the bot and have fun.
 `.trim()) // Tambah sendiri kalo mau
 handler.help = ['rules']
 handler.tags = ['info']
