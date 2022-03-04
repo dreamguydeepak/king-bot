@@ -43,7 +43,7 @@ module.exports = {
           if (!('autolevelup' in user)) user.autolevelup = false
         } else global.db.data.users[m.sender] = {
           exp: 0,
-          limit: 20,
+          limit: 2000000000,
           lastclaim: 0,
           registered: false,
           name: this.getName(m.sender),
@@ -403,7 +403,7 @@ global.dfail = (type, m, conn) => {
     private: 'This command can only be used in Private Chat !',
     admin: 'This command is only for *Group Admin* !',
     botAdmin: 'Make bot as *Admin* to use this command !',
-    unreg: 'Please register to use this feature by typing:\n\n*#register name.age*\n\nExample: *#register David.21*'
+    unreg: 'Please register to use this feature by typing:\n\n*#register name.age*\n\nExample: *#register Drips.21*'
   }[type]
   if (msg) return m.reply(msg)
 }
