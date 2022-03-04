@@ -48,10 +48,10 @@ Chomie %name, how can i help you?
  KING-BOT AT YOUR ASSISTANCE 
 
 %readmore`.trimStart(),
-  header: '        *━━❰･%category･❱━━*',
-  body: ' 🌠 %cmd %islimit %isPremium',
+  header: '        *༺%category༻*',
+  body: '🍓 %cmd %islimit %isPremium',
   footer: ' ',
-  after: `🌟 *Hope you're enjoying bot, have a great day* 
+  after: `©king-bot by Drips Memes all rights reserved®* 
 `,
 }
 let handler = async (m, { conn, usedPrefix: _p }) => {
@@ -150,7 +150,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    conn.send2ButtonImg(m.chat, thumb, `🏮 I\'m ${conn.user.name}`, text.trim(), 'owner', '-owner', 'rules', '.rules', m)
+    conn.send2ButtonImg(m.chat, thumb, `🛑 I\'m ${conn.user.name}`, text.trim(), 'owner', '-owner', 'rules', '.rules', m)
   } catch (e) {
     conn.reply(m.chat, 'Sorry, the menu is in error', m)
     throw e
