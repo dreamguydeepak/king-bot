@@ -1,10 +1,10 @@
-# tokio
+# KING-BOT 👑
 
-English version of wabot-aq
+
 
 Don't forget to give it a star  🌟
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/itsajaygaur/tokio-wabot)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/zim-bot/king-bot)
 
 ## FOR TERMUX/UBUNTU/SSH USER
 
@@ -14,8 +14,8 @@ apt install git -y
 apt install nodejs -y
 apt install ffmpeg -y
 apt install imagemagick -y
-git clone https://github.com/itsajaygaur/tokio-wabot
-cd tokio-wabot
+git clone https://github.com/zim-bot/king-bot
+cd king-bot
 npm install
 npm update
 ```
@@ -49,8 +49,8 @@ apt install wget curl git ffmpeg imagemagick build-essential libcairo2-dev libpa
 ubuntu
 curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
 apt install -y nodejs gcc g++ make
-git clone https://github.com/itsajaygaur/tokio-wabot
-cd tokio-wabot
+git clone https://github.com/zim-bot/king-bot
+cd king-bot
 npm install
 npm update
 ```
@@ -158,9 +158,9 @@ conn.logger.level = 'debug'
 
 -------
 
-[![Nurutomo](https://github.com/Nurutomo.png?size=100)](https://github.com/Nurutomo) | [![Ajay](https://github.com/itsajaygaur.png?size=100)](https://github.com/itsajaygaur/tokio-wabot) 
+[![DRIPS](https://github.com/zim-bot.png?size=100)](https://github.com/zim-bot) | [![DRIPS](https://github.com/zim-bot.png?size=100)](https://github.com/zim-bot/king-bot) 
 ----|----
-[Nurutomo](https://github.com/Nurutomo) | [Ajay](https://github.com/itsajaygaur/tokio-wabot) 
+[DRIPS](https://github.com/zim-bot) | [DRIPS](https://github.com/zim-bot/king-bot) 
 Author / Creator | Editor
  
 
@@ -168,7 +168,7 @@ Author / Creator | Editor
 
 Don't forget to give it a star 🌟
 
-Best regards: tokio
+Best regards: ZIM-BOTS
 
 
 
