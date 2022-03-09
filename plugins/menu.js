@@ -34,24 +34,24 @@ let tags = {
 const defaultMenu = {
   before: `
 
-Chomie %name, how can i help you?
+Makuruwani %name, how can i help you?
 
- Left: *%limit Limit*
- Role: *%role*
- Level: *%level* 
- Total XP: *%totalexp*
+ 🎀𝐋𝐈𝐌𝐈𝐓: *%limit Limit*
+ 🎀𝐑𝐎𝐋𝐄: *%role*
+ 🎀𝐋𝐄𝐕𝐄𝐋: *%level* 
+ 🎀𝐓𝐎𝐓𝐀𝐋 𝐗𝐏: *%totalexp*
 
- Prefix: *%p*
- Date: *%week, %date*
- Github: github.com/zim-bot/king-bot
+ 💎𝐏𝐑𝐄𝐅𝐈𝐗: *%p*
+ 💎𝐃𝐀𝐓𝐄: *%week, %date*
+ 💎𝐆𝐈𝐓𝐇𝐔𝐁: github.com/zim-bot/king-bot
 
- KING-BOT AT YOUR ASSISTANCE 
+ 𝙕𝙄𝙈 𝘽𝙊𝙏 𝘼𝙏 𝙔𝙊𝙐𝙍 𝘼𝙎𝙎𝙄𝙎𝙏𝘼𝙉𝘾𝙀😜
 
 %readmore`.trimStart(),
-  header: '        *༺%category༻*',
-  body: '🍓 %cmd %islimit %isPremium',
+  header: '        *🎀%category🎀*',
+  body: '🇿🇼🍇 %cmd %islimit %isPremium',
   footer: ' ',
-  after: `©king-bot by Drips Memes all rights reserved®* 
+  after: `*©king-bot by Drips Memes all rights reserved®* 
 `,
 }
 let handler = async (m, { conn, usedPrefix: _p }) => {
@@ -150,7 +150,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    conn.send2ButtonImg(m.chat, thumb, `🛑 I\'m ${conn.user.name}`, text.trim(), 'owner', '-owner', 'rules', '.rules', m)
+    conn.send2ButtonImg(m.chat, thumb, `🍇 I\'m ${conn.user.name}`, text.trim(), 'owner', '-owner', 'rules', '.rules', m)
   } catch (e) {
     conn.reply(m.chat, 'Sorry, the menu is in error', m)
     throw e
