@@ -68,9 +68,9 @@ module.exports = {
           if (!('sPromote' in chat)) chat.sPromote = ''
           if (!('sDemote' in chat)) chat.sDemote = ''
           if (!('delete' in chat)) chat.delete = true
-          if (!('antiLink' in chat)) chat.antiLink = false
+          if (!('antiLink' in chat)) chat.antiLink = true
           if (!('simi' in chat)) chat.simi = false
-          if (!('viewonce' in chat)) chat.viewonce = false
+          if (!('viewonce' in chat)) chat.viewonce = true
         } else global.db.data.chats[m.chat] = {
           isBanned: false,
           welcome: false,
@@ -80,9 +80,9 @@ module.exports = {
           sPromote: '',
           sDemote: '',
           delete: true,
-          antiLink: false,
+          antiLink: true,
           simi: false,
-          viewonce: false,
+          viewonce: true,
         }
       } catch (e) {
         console.error(e)
