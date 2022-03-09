@@ -32,7 +32,7 @@ Evolution Line: ${json.family.evolutionLine}\n
 DESCRIPTION
 ${json.description}
 Generation: ${json.generation}\n\n
-~kazukafu
+~dripsmemes
   `.trim();
   if (!json.error)
     await conn.sendFile(
