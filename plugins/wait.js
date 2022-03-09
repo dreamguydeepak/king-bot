@@ -1,5 +1,5 @@
-// https://github.com/Nobuyaki
-// Jangan Hapus link githubnya bang :)
+// https://github.com/zim-bot
+// Drips Memes :)
 
 const fetch = require('node-fetch')
 let handler = async (m, { conn, usedPrefix }) => {
@@ -24,11 +24,11 @@ let handler = async (m, { conn, usedPrefix }) => {
   let nobuyaki = `
 ${similarity < 0.89 ? 'I Have Low Confidence About This' : ''}
 
-❏ Japanese title : *${title}*
-❏ Spelling Title : *${title_romaji}*
-❏ Similarity : *${(similarity * 100).toFixed(1)}%*
-❏ Episode : *${episode.toString()}*
-❏ Ecchi : *${is_adult ? 'Yes' : 'No'}*
+🍋 Japanese title : *${title}*
+🍋 Spelling Title : *${title_romaji}*
+🍋 Similarity : *${(similarity * 100).toFixed(1)}%*
+🍋 Episode : *${episode.toString()}*
+🍋 Ecchi : *${is_adult ? 'Yes' : 'No'}*
 `.trim()
   conn.sendFile(m.chat, link, 'srcanime.mp4', `${nobuyaki}`, m)
 }
