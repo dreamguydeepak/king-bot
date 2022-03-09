@@ -15,15 +15,15 @@ let handler = async (m, { conn, usedPrefix }) => {
     let math = max - xp
     let prem = global.prems.includes(who.split`@`[0])
     let str = `
-⭐Name: ${username} ${registered ? '(' + name + ') ': ''}(@${who.replace(/@.+/, '')})${about ? '\n\n🥀About: ' + about : ''}
+🎀Name: ${username} ${registered ? '(' + name + ') ': ''}(@${who.replace(/@.+/, '')})${about ? '\n\n🥀About: ' + about : ''}
 
-🧩Number: ${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}
+🎀Number: ${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}
 
-⛓️Link: https://wa.me/${who.split`@`[0]}${registered ? '\n\n🎈Age: ' + age : ''}
+🎀Link: https://wa.me/${who.split`@`[0]}${registered ? '\n\n🎈Age: ' + age : ''}
 
-☕XP: ${exp} (${math <= 0 ? `Ready to *${usedPrefix}levelup*` : `${math} XP left to levelup`})
+🥭XP: ${exp} (${math <= 0 ? `Ready to *${usedPrefix}levelup*` : `${math} XP left to levelup`})
 
-🎟️Level: ${level}
+💎Level: ${level}
 
 🎗️Role: *${role}*
 
@@ -31,7 +31,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 
 🔏Registered: ${registered ? 'Yes (' + new Date(regTime) + ')': 'No'}
 
-🏮Premium: ${prem ? 'Yes' : 'No'}${lastclaim > 0 ? '\n\n🍁Last Claim: ' + new Date(lastclaim) : ''}
+💎Premium: ${prem ? 'Yes' : 'No'}${lastclaim > 0 ? '\n\n🍁Last Claim: ' + new Date(lastclaim) : ''}
 `.trim()
     let mentionedJid = [who]
     conn.sendFile(m.chat, pp, 'pp.jpg', str, m, false, { contextInfo: { mentionedJid }})
