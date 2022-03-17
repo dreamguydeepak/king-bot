@@ -1,10 +1,32 @@
-# KING-BOT 👑
+# Deepak Bot 😎
+<img src="https://i.imgur.com/4tRKOcz.png"
+ 
+<p align="center">
+<strong>Deepak Bot V1</strong>
+</p>
+
+</div>
+
+<p align="center">
+<a href="##"><img title="PUBLIC-BOT" src="https://img.shields.io/static/v1?label=Language&message=English&color=blue"></a>
+</p>
+<p align="center">
+  <a href="https://github.com/dreamguydeepak"><img title="Developer" src="https://img.shields.io/badge/Author-Deepak-blue.svg?style=for-the-badge&logo=github" /></a>
+</p>
+<p align="center">
+<a href="#"><img title="Deepak" src="https://img.shields.io/static/v1?label=WHATSAPP&message=Automated-Bot&color=blue"></a>
+</p>
+
+# Setup For Deployment 👇
+
+## `Required WhatsApps`
+[`1st Install`] (https://drive.google.com/file/d/13QSH9jnbGjjTuK8fUJGams97eQYmJGTf/view?usp=drivesdk)
 
 
 
 Don't forget to give it a star  🌟
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/zim-bot/king-bot)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dreamguydeepak/king-bot)
 
 ## FOR TERMUX/UBUNTU/SSH USER
 
@@ -14,8 +36,8 @@ apt install git -y
 apt install nodejs -y
 apt install ffmpeg -y
 apt install imagemagick -y
-git clone https://github.com/zim-bot/king-bot
-cd king-bot
+git clone https://github.com/dreamguydeepak/deepak-bot
+cd deepak-bot
 npm install
 npm update
 ```
@@ -49,8 +71,8 @@ apt install wget curl git ffmpeg imagemagick build-essential libcairo2-dev libpa
 ubuntu
 curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
 apt install -y nodejs gcc g++ make
-git clone https://github.com/zim-bot/king-bot
-cd king-bot
+git clone https://github.com/dreamguydeepak/deepak-bot
+cd deepak-bot
 npm install
 npm update
 ```
@@ -158,17 +180,16 @@ conn.logger.level = 'debug'
 
 -------
 
-[![DRIPS](https://github.com/zim-bot.png?size=100)](https://github.com/zim-bot) | [![DRIPS](https://github.com/zim-bot.png?size=100)](https://github.com/zim-bot/king-bot) 
+[![Deepak](https://github.com/dreamguydeepak.png?size=100)](https://github.com/dreamguydeepak) | [![DRIPS](https://github.com/zim-bot.png?size=100)](https://github.com/zim-bot/king-bot) 
 ----|----
-[DRIPS](https://github.com/zim-bot) | [DRIPS](https://github.com/zim-bot/king-bot) 
-Author / Creator | Editor
+[Deepak](https://github.com/dreamguydeepak)
  
 
 
 
 Don't forget to give it a star 🌟
 
-Best regards: ZIM-BOTS
+Best regards: DEEOAK-BOTS V1
 
 
 
