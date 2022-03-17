@@ -1,5 +1,6 @@
-# Deepak Bot 😎
-<img src="https://i.imgur.com/4tRKOcz.png"
+<p align="center">
+  <img src="https://i.imgur.com/4tRKOcz.png"
+
  
 <p align="center">
 <strong>Deepak Bot V1</strong>
